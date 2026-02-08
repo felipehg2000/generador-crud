@@ -1,0 +1,147 @@
+{
+  "NombreTabla": "CAMPOS",
+  "CamposEdicion": [
+    {
+      "Nombre": "ID",
+      "Seleccionado": true,
+      "TipoDato": 0
+    },
+    {
+      "Nombre": "CAMPO_BLOB_BINARY",
+      "Seleccionado": true,
+      "TipoDato": 1
+    },
+    {
+      "Nombre": "CAMPO_BLOB_TEXT",
+      "Seleccionado": true,
+      "TipoDato": 1
+    },
+    {
+      "Nombre": "CAMPO_CHAR",
+      "Seleccionado": true,
+      "TipoDato": 2
+    },
+    {
+      "Nombre": "CAMPO_DATE",
+      "Seleccionado": true,
+      "TipoDato": 3
+    },
+    {
+      "Nombre": "CAMPO_DECIMAL",
+      "Seleccionado": true,
+      "TipoDato": 4
+    },
+    {
+      "Nombre": "CAMPO_DOUBLE",
+      "Seleccionado": true,
+      "TipoDato": 5
+    },
+    {
+      "Nombre": "CAMPO_FLOAT",
+      "Seleccionado": true,
+      "TipoDato": 6
+    },
+    {
+      "Nombre": "CAMPO_INTEGER",
+      "Seleccionado": true,
+      "TipoDato": 7
+    },
+    {
+      "Nombre": "CAMPO_NUMERIC",
+      "Seleccionado": true,
+      "TipoDato": 8
+    },
+    {
+      "Nombre": "CAMPO_SMALINT",
+      "Seleccionado": true,
+      "TipoDato": 9
+    },
+    {
+      "Nombre": "CAMPO_TIME",
+      "Seleccionado": true,
+      "TipoDato": 10
+    },
+    {
+      "Nombre": "CAMPO_TIMESTAMP",
+      "Seleccionado": true,
+      "TipoDato": 11
+    },
+    {
+      "Nombre": "CAMPO_VARCHAR",
+      "Seleccionado": true,
+      "TipoDato": 12
+    }
+  ],
+  "CamposFiltro": [
+    {
+      "Nombre": "ID",
+      "Seleccionado": true,
+      "TipoDato": 0
+    },
+    {
+      "Nombre": "CAMPO_BLOB_BINARY",
+      "Seleccionado": true,
+      "TipoDato": 1
+    },
+    {
+      "Nombre": "CAMPO_BLOB_TEXT",
+      "Seleccionado": true,
+      "TipoDato": 1
+    },
+    {
+      "Nombre": "CAMPO_CHAR",
+      "Seleccionado": true,
+      "TipoDato": 2
+    },
+    {
+      "Nombre": "CAMPO_DATE",
+      "Seleccionado": true,
+      "TipoDato": 3
+    },
+    {
+      "Nombre": "CAMPO_DECIMAL",
+      "Seleccionado": true,
+      "TipoDato": 4
+    },
+    {
+      "Nombre": "CAMPO_DOUBLE",
+      "Seleccionado": true,
+      "TipoDato": 5
+    },
+    {
+      "Nombre": "CAMPO_FLOAT",
+      "Seleccionado": true,
+      "TipoDato": 6
+    },
+    {
+      "Nombre": "CAMPO_INTEGER",
+      "Seleccionado": true,
+      "TipoDato": 7
+    },
+    {
+      "Nombre": "CAMPO_NUMERIC",
+      "Seleccionado": true,
+      "TipoDato": 8
+    },
+    {
+      "Nombre": "CAMPO_SMALINT",
+      "Seleccionado": true,
+      "TipoDato": 9
+    },
+    {
+      "Nombre": "CAMPO_TIME",
+      "Seleccionado": true,
+      "TipoDato": 10
+    },
+    {
+      "Nombre": "CAMPO_TIMESTAMP",
+      "Seleccionado": true,
+      "TipoDato": 11
+    },
+    {
+      "Nombre": "CAMPO_VARCHAR",
+      "Seleccionado": true,
+      "TipoDato": 12
+    }
+  ]
+}
