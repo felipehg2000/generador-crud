@@ -245,6 +245,11 @@ namespace generador_crud.Formularios
             string valor_actual = valorCelda?.ToString() ?? string.Empty;
             if (valor_actual == "✔")
             {
+                NumColumnas--;
+                fila.Cells[(int)ColumnasDataGridView.MostrarTabla].Value = "❌";
+            }
+            else
+            {
                 if (NumColumnas == 5)
                 {
                     MessageBox.Show("Solo se pueden seleccionar 5 argumentos para ser mostrados en la tabla.",
@@ -255,11 +260,6 @@ namespace generador_crud.Formularios
                 }
 
                 NumColumnas++;
-                fila.Cells[(int)ColumnasDataGridView.MostrarTabla].Value = "❌";
-            }
-            else
-            {
-                NumColumnas--;
                 fila.Cells[(int)ColumnasDataGridView.MostrarTabla].Value = "✔";
             }
 

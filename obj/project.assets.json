@@ -8,19 +8,19 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\FELIPE\\.nuget\\packages\\": {}
+    "C:\\Users\\ApliUser\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\generador-crud.csproj",
+      "projectUniqueName": "C:\\Users\\ApliUser\\Desktop\\Pruebas Generador\\generador-crud\\generador-crud.csproj",
       "projectName": "generador-crud",
-      "projectPath": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\generador-crud.csproj",
-      "packagesPath": "C:\\Users\\FELIPE\\.nuget\\packages\\",
-      "outputPath": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\obj\\",
+      "projectPath": "C:\\Users\\ApliUser\\Desktop\\Pruebas Generador\\generador-crud\\generador-crud.csproj",
+      "packagesPath": "C:\\Users\\ApliUser\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ApliUser\\Desktop\\Pruebas Generador\\generador-crud\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\FELIPE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ApliUser\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

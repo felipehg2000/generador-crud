@@ -31,6 +31,7 @@ namespace generador_crud.Plantillas.CMasMas
 #define ControladorDAO{NombreTabla}H
 //---------------------------------------------------------------------------
 #include ""{NombreTabla}.h""
+#include ""Filtros{NombreTabla}.h""
 #include <vector>
 #include <IBC.hpp>
 #include <System.SysUtils.hpp>
@@ -47,13 +48,17 @@ private:
 	TIBCQuery* _consulta_sql;
 
 	// Métodos
-	std::vector<T{NombreTabla}*> EjecutarConsultaLectura(const String &param_consulta);
+	std::vector<T{NombreTabla}*> EjecutarConsultaLectura(const String &param_consulta,
+		TFiltros{NombreTabla}* param_filtros);
+	String GenerarFiltros(TFiltros{NombreTabla}* param_filtros);
+
 	T{NombreTabla}* CargarModelo();
 
-	void EjecutarConsultaEscritura(const String &param_consulta);
+	void EjecutarConsultaEscritura(const String &param_consulta,
+		T{NombreTabla}* param_modelo);
 	void LimpiarConsulta();
-	void Parametrizar({NombreTabla}* param_datos);
-    void ParametrizarFiltros({NombreTabla}* param_filtros);
+	void Parametrizar(T{NombreTabla}* param_datos);
+	void ParametrizarFiltros(TFiltros{NombreTabla}* param_filtros);
 
 public:
 	// Constructor y destructor
@@ -63,7 +68,7 @@ public:
 	// Métodos
 	bool Create(T{NombreTabla}* param_modelo);
 	bool Update(T{NombreTabla}* param_modelo);
-    bool Delete(T{NombreTabla}* param_modelo);
+	bool Delete(T{NombreTabla}* param_modelo);
 
 	std::vector<T{NombreTabla}*> Read(TFiltros{NombreTabla}* param_modelo);
 
@@ -98,7 +103,7 @@ public:
 //---------------------------------------------------------------------------
 #pragma hdrstop
 
-#include ""TControladorDAO{NombreTabla}.h""
+#include ""ControladorDAO{NombreTabla}.h""
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
@@ -111,7 +116,7 @@ public:
  * @author  Generador CRUD.
  */
 TControladorDAO{NombreTabla}::TControladorDAO{NombreTabla}(TIBCConnection* param_conexion_bd) :
-	_conexion_bd(param_conexion_bd),
+	_conexion_bd(param_conexion_bd)
 {
 _consulta_sql = new TIBCQuery(NULL);
 _consulta_sql->Connection = _conexion_bd;
@@ -143,13 +148,14 @@ _consulta_sql = NULL;
 bool TControladorDAO{NombreTabla}::Create(T{NombreTabla}* param_modelo)
 {
 String consulta =	
-	""INSER INTO \n""
+	""INSERT INTO \n""
 	""{NombreTabla}( \n""
 {Campos}) \n""
 	""VALUES ( \n""
 {Parametros})\n"";
 
-EjecutarConsultaEscritura(consulta);
+EjecutarConsultaEscritura(consulta, param_modelo);
+return true;
 }
 //---------------------------------------------------------------------------
 /**
@@ -169,7 +175,8 @@ String consulta =
 	""WHERE \n""
 	""{FiltroPK}"";
 
-EjecutarConsultaEscritura(consulta);
+EjecutarConsultaEscritura(consulta, param_modelo);
+return true;
 }
 //---------------------------------------------------------------------------
 /**
@@ -187,7 +194,8 @@ String consulta =
 	""WHERE \n""
 	""{FiltroPK}"";
 
-EjecutarConsultaEscritura(consulta);
+EjecutarConsultaEscritura(consulta, param_modelo);
+return true;
 }
 //---------------------------------------------------------------------------
 /**
@@ -209,7 +217,7 @@ String consulta =
 	""WHERE \n""
 	""  "" + filtros + "";"";
 
-return EjecutarConsultaLectura(consulta);
+return EjecutarConsultaLectura(consulta, param_modelo);
 }
 //---------------------------------------------------------------------------
 #pragma end_region Metodos publicos
@@ -224,13 +232,13 @@ return EjecutarConsultaLectura(consulta);
  * @since   {FechaGeneracion}
  * @author  Generador CRUD.
  */
-std::vector<T{NombreTabla}*> TControladorDAO{NombreTabla}::EjecutarConsultaLectura(const String &param_consulta)
+std::vector<T{NombreTabla}*> TControladorDAO{NombreTabla}::EjecutarConsultaLectura(const String &param_consulta, TFiltros{NombreTabla}* param_filtros)
 {
 std::vector<T{NombreTabla}*> ret_modelo;
 
 LimpiarConsulta();
 _consulta_sql->SQL->Text = param_consulta;
-ParametrizarFiltros();
+ParametrizarFiltros(param_filtros);
 
 _consulta_sql->Open();
 for (_consulta_sql->First(); !_consulta_sql->Eof; _consulta_sql->Next())
@@ -246,6 +254,27 @@ return ret_modelo;
 }
 //---------------------------------------------------------------------------
 /**
+ * @brief   Genera los filtros para introducirlos en la base de datos.
+ * @details Código generado de manera automática.
+ * @param   param_modelo Modelo con los filtros a añadir en la consulta.
+ * @return  ret_filtros Filtros a introducir en la consulta.
+ * @since	{FechaGeneracion}
+ * @author  Generador CRUD.
+ */
+String TControladorDAO{NombreTabla}::GenerarFiltros(TFiltros{NombreTabla}* param_modelo)
+{
+String ret_filtros = ""1 = 1"";
+if (param_modelo == NULL)
+	{
+	return ret_filtros;
+	}
+
+{GeneracionFiltros}
+
+return ret_filtros;
+}
+//---------------------------------------------------------------------------
+/**
  * @brief   Carga un objeto T{NombreTabla} con los datos del registro actual del conjunto de resultados.
  * @details Código generado de manera automática.
  * @return  Puntero a un objeto T{NombreTabla} con los datos del registro actual.
@@ -254,9 +283,10 @@ return ret_modelo;
  */
 T{NombreTabla}* TControladorDAO{NombreTabla}::CargarModelo()
 {
-T{NombreTabla}* ret_modelo = new T{NombreTabla}*();
+T{NombreTabla}* ret_modelo = new T{NombreTabla}();
 TField* campo = NULL;
 {CargarCampos}
+return ret_modelo;
 }
 //---------------------------------------------------------------------------
 /**
@@ -266,12 +296,12 @@ TField* campo = NULL;
  * @since   {FechaGeneracion}
  * @author  Generador CRUD.
  */
-void TControladorDAO{NombreTabla}::EjecutarConsultaEscritura(const String &param_consulta)
+void TControladorDAO{NombreTabla}::EjecutarConsultaEscritura(const String &param_consulta, T{NombreTabla}* param_modelo)
 {
 LimpiarConsulta();
 
 _consulta_sql->SQL->Text = param_consulta;
-Parametrizar();
+Parametrizar(param_modelo);
 
 _consulta_sql->ExecSQL();
 
@@ -293,11 +323,11 @@ _consulta_sql->SQL->Clear();
 /**
  * @brief   Parametriza la consulta SQL con los datos del modelo.
  * @details Código generado de manera automática.
- * @param   param_datos Objeto T{NombreTabla} con los datos a parametrizar.
+ * @param   param_modelo Objeto T{NombreTabla} con los datos a parametrizar.
  * @since   {FechaGeneracion}
  * @author  Generador CRUD.
  */
-void TControladorDAO{NombreTabla}::Parametrizar(T{NombreTabla}* param_datos)
+void TControladorDAO{NombreTabla}::Parametrizar(T{NombreTabla}* param_modelo)
 {
 TParam* parametro = NULL;
 {CargarParametros}
@@ -306,11 +336,11 @@ TParam* parametro = NULL;
 /**
  * @brief   Parametriza la consulta SQL con los filtros indicados.
  * @details Código generado de manera automática.
- * @param   param_filtros Objeto TFiltros{NombreTabla} con los filtros a parametrizar.
+ * @param   param_modelo Objeto TFiltros{NombreTabla} con los filtros a parametrizar.
  * @since   {FechaGeneracion}
  * @author  Generador CRUD.
  */
-void TControladorDAO{NombreTabla}::ParametrizarFiltros(TFiltros{NombreTabla}* param_filtros)
+void TControladorDAO{NombreTabla}::ParametrizarFiltros(TFiltros{NombreTabla}* param_modelo)
 {
 TParam* parametro = NULL;
 {CargarParametrosFiltros}

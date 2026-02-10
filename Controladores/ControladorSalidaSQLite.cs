@@ -4,7 +4,7 @@ using generador_crud.Plantillas.C_Sharp;
 namespace generador_crud.Controladores
 {
     /// <summary>
-    /// Clase encargada de generar los archivos de salida.
+    /// Clase encargada de generar los archivos de salida para .NET.
     /// </summary>
     internal class ControladorSalidaSQLite
     {

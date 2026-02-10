@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\formularios\\formularioficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:formularios\\formularioficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\formularios\\formularioficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:formularios\\formularioficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\formularios\\formularioprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:formularios\\formularioprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\controladores\\controladorficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:controladores\\controladorficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,39 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormularioFicheroDefUI.cs",
-              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioFicheroDefUI.cs",
-              "RelativeDocumentMoniker": "Formularios\\FormularioFicheroDefUI.cs",
-              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioFicheroDefUI.cs",
-              "RelativeToolTip": "Formularios\\FormularioFicheroDefUI.cs",
-              "ViewState": "AgIAAMUAAAAAAAAAAAAAANsAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T10:12:26.858Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "FormularioFicheroDefUI.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioFicheroDefUI.cs",
               "RelativeDocumentMoniker": "Formularios\\FormularioFicheroDefUI.cs",
               "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioFicheroDefUI.cs [Dise\u00F1o]",
               "RelativeToolTip": "Formularios\\FormularioFicheroDefUI.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T10:12:23.501Z",
+              "WhenOpened": "2026-02-09T19:10:43.479Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormularioPrincipal.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioPrincipal.cs",
-              "RelativeDocumentMoniker": "Formularios\\FormularioPrincipal.cs",
-              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioPrincipal.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Formularios\\FormularioPrincipal.cs [Dise\u00F1o]",
+              "DocumentIndex": 1,
+              "Title": "ControladorFicheroDefUI.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\ControladorFicheroDefUI.cs",
+              "RelativeDocumentMoniker": "Controladores\\ControladorFicheroDefUI.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\ControladorFicheroDefUI.cs",
+              "RelativeToolTip": "Controladores\\ControladorFicheroDefUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T10:12:09.524Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-02-09T18:34:31.617Z",
+              "EditorCaption": ""
             }
           ]
         }

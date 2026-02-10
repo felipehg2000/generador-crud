@@ -4,6 +4,9 @@ using System.IO;
 
 namespace generador_crud.Modelos.Objetos
 {
+    /// <summary>
+    /// Clase que representa una columna de la base de datos Firebird.
+    /// </summary>
     public class ColumnaFirebird : Columna
     {
         /// <summary>
@@ -74,6 +77,11 @@ namespace generador_crud.Modelos.Objetos
             };
         }
 
+        /// <summary>
+        /// Castea la enumeración del tipo de dato por el texto.
+        /// </summary>
+        /// <returns>Texto de tipo de dato.</returns>
+        /// <exception cref="ArgumentException">Enumeración fuera de rango.</exception>
         public string ObtenerCampoDDL()
         {
             return TipoDato switch
@@ -106,7 +114,7 @@ namespace generador_crud.Modelos.Objetos
         public string GenerarAtributoEmbarcadero()
         {
             string ret_atributo = ConvertirTipoDatoCMasMas();
-            ret_atributo += " _" + Nombre.ToLower() + ";";
+            ret_atributo += " _" + ObtenerNombreCapitalizado() + ";";
 
             return ret_atributo;
         }
@@ -119,20 +127,36 @@ namespace generador_crud.Modelos.Objetos
         {
             string ret_propiedad = "__property ";
             ret_propiedad += ConvertirTipoDatoCMasMas();
-            ret_propiedad += " " + Nombre + " = {" + "read= _" + Nombre.ToLower() + ", write= _" + Nombre.ToLower() + "};";
+            ret_propiedad += " " + ObtenerNombreCapitalizado() + " = {" + "read = _" + ObtenerNombreCapitalizado() + ", write = _" + ObtenerNombreCapitalizado() + "};";
 
             return ret_propiedad;
         }
 
+        /// <summary>
+        /// Inicializa el argumento de otro modelo para copiar los valores de sus atributos al nuevo modelo.
+        /// </summary>
+        /// <returns>Texto de la inicialización.</returns>
         public string GenerarInicializacionDeCopia()
         {
-            return "_" + Nombre.ToLower() + "(param_otro_modelo->" + Nombre + ")";
+            if (TipoDato == TiposDatos.BLOB)
+            {
+                string texto = "\n_" + ObtenerNombreCapitalizado() + " = new TMemoryStream();";
+                texto += "\n_" + ObtenerNombreCapitalizado() + "->LoadFromStream(param_otro_modelo->" + ObtenerNombreCapitalizado() + ");";
+                return texto;
+            }
+
+            return "_" + ObtenerNombreCapitalizado() + "(param_otro_modelo->" + ObtenerNombreCapitalizado() + ")";
 
         }
 
+        /// <summary>
+        /// Inicializa el atributo con un valor vacío dependiendo del tipo de dato.
+        /// </summary>
+        /// <returns>Texto de la inicialización.</returns>
         public string GenerarInicializacionVacia()
         {
-            string ret_inicializacion = "_" + Nombre.ToLower() + "(";
+            string ret_inicializacion = TipoDato == TiposDatos.BLOB ? "_" + ObtenerNombreCapitalizado() + " = " :
+                "_" + ObtenerNombreCapitalizado() + "(";
 
             ret_inicializacion += TipoDato switch
             {
@@ -152,15 +176,28 @@ namespace generador_crud.Modelos.Objetos
                 _ => "\"\""
             };
 
-            ret_inicializacion += ")";
+            ret_inicializacion += TipoDato == TiposDatos.BLOB ? ";" : ")";
 
             return ret_inicializacion;
 
         }
 
+        /// <summary>
+        /// Iguala el atributo a un valor vacío dependiendo del tipo de dato, para limpiar los valores del modelo.
+        /// </summary>
+        /// <returns>Texto de igualdad a vacío.</returns>
         public string GenerarLimpiezaAtributos()
         {
-            string ret_limpieza = GenerarAtributoEmbarcadero() + "= ";
+            if (TipoDato == TiposDatos.BLOB)
+            {
+                string ret_texto = "\nif (_" + ObtenerNombreCapitalizado() + ")";
+                ret_texto += "\n\t{";
+                ret_texto += "\n\t_" + ObtenerNombreCapitalizado() + "->Clear();";
+                ret_texto += "\n\t{";
+                return ret_texto;
+            }
+
+            string ret_limpieza = "_" + ObtenerNombreCapitalizado() + "= ";
 
             ret_limpieza += TipoDato switch
             {
@@ -175,12 +212,11 @@ namespace generador_crud.Modelos.Objetos
                 TiposDatos.CADENA_CARACTERES => "\"\"",
                 TiposDatos.FECHA => "TDate()",
                 TiposDatos.MARCA_TIEMPO => "TDateTime()",
-                TiposDatos.BLOB => "new TMemoryStream()",
                 TiposDatos.TIEMPO => "TTime()",
                 _ => "\"\""
             };
 
-            ret_limpieza = ";";
+            ret_limpieza += ";";
 
             return ret_limpieza;
         }
@@ -195,52 +231,171 @@ namespace generador_crud.Modelos.Objetos
         /// <returns>Parametro en una consulta SQL.</returns>
         public string GetNombreParametro()
         {
-            return ":P_" + Nombre;
+            return "P_" + ObtenerNombreCapitalizado();
         }
 
+        /// <summary>
+        /// Genera el texto para cargar un atributo desde una consulta SQL.
+        /// </summary>
+        /// <returns>Texto de la carga del atributo.</returns>
         public string GenerarCargarCampos()
         {
+            if (TipoDato == TiposDatos.BLOB)
+            {
+                return string.Empty;
+            }
             string ret_texto =
 @"
 // Carga el campo {Nombre}
-campo = param_consulta_sql->FindParam(""{Nombre}"");
+campo = _consulta_sql->FindField(""{Nombre}"");
 if (campo)
     {
-    ret_modelo->{Nombre} = campo->As{TipoDato}
+    ret_modelo->{Nombre} = campo->{TipoDato};
     }
 ";
-            ret_texto = ret_texto.Replace("{Nombre}", Nombre);
-            ret_texto = ret_texto.Replace("{TipoDato}", ConvertirTipoDatoCMasMas());
+            ret_texto = ret_texto.Replace("{Nombre}", ObtenerNombreCapitalizado());
+            ret_texto = ret_texto.Replace("{TipoDato}", ObtenerTipoDatoTIBC());
 
             return ret_texto;
         }
 
+        /// <summary>
+        /// Genera la carga de parámetros de una consulta SQL.
+        /// </summary>
+        /// <returns>Texto de la carga de parámetros.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Tipo de dato no reconocido.</exception>
         public string GenerarCargaParametros()
         {
-            string ret_texto =
+            if (TipoDato == TiposDatos.TIEMPO || TipoDato == TiposDatos.FECHA || TipoDato == TiposDatos.MARCA_TIEMPO)
+            {
+                string ret_texto =
 @"
 // Carga el parámetro {Nombre}
-parametro = param_consulta_sql->FindParam(""{Parametro}"");
+parametro = _consulta_sql->FindParam(""{Parametro}"");
+if (parametro)
+	 {
+	 if (param_modelo->{NombrePropiedad} == {InicializacionVacia})
+		 {
+		 parametro->Clear();
+		 }
+	 else
+		{
+	 	parametro->{TipoDatoIBC} = param_modelo->{NombrePropiedad};
+		}
+	 }
+";
+                ret_texto = ret_texto.Replace("{Nombre}", Nombre);
+                ret_texto = ret_texto.Replace("{NombrePropiedad}", ObtenerNombreCapitalizado());
+                ret_texto = ret_texto.Replace("{Parametro}", GetNombreParametro());
+                ret_texto = ret_texto.Replace("{TipoDatoIBC}", TipoDato switch
+                {
+                    TiposDatos.FECHA => "AsDate",
+                    TiposDatos.MARCA_TIEMPO => "AsDateTime",
+                    TiposDatos.TIEMPO => "AsTime",
+                    _ => throw new ArgumentOutOfRangeException("El tipo de dato no se ha podido reconocer")
+                });
+                ret_texto = ret_texto.Replace("{InicializacionVacia}", TipoDato switch
+                {
+                    TiposDatos.FECHA => "TDate(0)",
+                    TiposDatos.MARCA_TIEMPO => "TDateTime(0)",
+                    TiposDatos.TIEMPO => "TTime(0)",
+                    _ => throw new ArgumentOutOfRangeException("El tipo de dato no se ha podido reconocer")
+                });
+
+                return ret_texto;
+            }
+            else if (TipoDato == TiposDatos.BLOB)
+            {
+                return string.Empty;
+            }
+            else
+            {
+
+                string ret_texto =
+    @"
+// Carga el parámetro {Nombre}
+parametro = _consulta_sql->FindParam(""{Parametro}"");
 if (parametro)
     {
-    parametro->As{TipoDato} = param_modelo->{Nombre}; 
+    parametro->{TipoDato} = param_modelo->{NombrePropiedad}; 
     }
 ";
 
-            ret_texto = ret_texto.Replace("{Nombre}", Nombre);
-            ret_texto = ret_texto.Replace("{Parametro}", GetNombreParametro());
-            ret_texto = ret_texto.Replace("{TipoDato}", ConvertirTipoDatoCMasMas());
+                ret_texto = ret_texto.Replace("{Nombre}", Nombre);
+                ret_texto = ret_texto.Replace("{NombrePropiedad}", ObtenerNombreCapitalizado());
+                ret_texto = ret_texto.Replace("{Parametro}", GetNombreParametro());
+                ret_texto = ret_texto.Replace("{TipoDato}", ObtenerTipoDatoTIBC());
 
-            return ret_texto;
+                return ret_texto;
+            }
         }
 
+        /// <summary>
+        /// Genera los filtros desde y hasta de un atributo.
+        /// </summary>
+        /// <returns>Texto de generación de los filtros.</returns>
+        public string GenerarFiltros()
+        {
+            if (TipoDato == TiposDatos.BLOB)
+            {
+                return string.Empty;
+            }
+
+            string plantilla =
+@"
+// carga el filtro {NombreFiltro}
+if (param_modelo->{NombreFiltro} != {CampoVacio})
+    {
+    ret_filtros += "" AND \n   {Nombre} {Signo} :{Parametro} "";
+    }
+";
+            string campo_vacio = TipoDato switch
+            {
+                TiposDatos.DECIMAL => "0",
+                TiposDatos.DOBLE_PRECISION => "0",
+                TiposDatos.NUMERICO => "0",
+                TiposDatos.FLOTANTE => "0",
+                TiposDatos.ENTERO => "0",
+                TiposDatos.PEQUENO_ENTERO => "0",
+                TiposDatos.GRAN_ENTERO => "0",
+                TiposDatos.VARCHAR => "\"\"",
+                TiposDatos.CADENA_CARACTERES => "\"\"",
+                TiposDatos.FECHA => "TDate()",
+                TiposDatos.MARCA_TIEMPO => "TDateTime()",
+                TiposDatos.TIEMPO => "TTime()",
+                _ => "\"\""
+            };
+
+            string desde = plantilla;
+            desde = desde.Replace("{NombreFiltro}", ObtenerNombreCapitalizado() + "_desde");
+            desde = desde.Replace("{CampoVacio}", campo_vacio);
+            desde = desde.Replace("{Nombre}", Nombre);
+            desde = desde.Replace("{Signo}", ">=");
+            desde = desde.Replace("{Parametro}", "P_" + ObtenerNombreCapitalizado() + "_desde");
+            string hasta = plantilla;
+            hasta = hasta.Replace("{NombreFiltro}", ObtenerNombreCapitalizado() + "_hasta");
+            hasta = hasta.Replace("{CampoVacio}", campo_vacio);
+            hasta = hasta.Replace("{Nombre}", Nombre);
+            hasta = hasta.Replace("{Signo}", "<=");
+            hasta = hasta.Replace("{Parametro}", GetNombreParametro() + "_hasta");
+
+            return desde + hasta;
+        }
 
         #endregion "Métodos DAO"
 
         #region "Métodos formulario"
 
+        /// <summary>
+        /// Según el tipo de dato, genera la definición del componente visual para cargar el valor del atributo en el formulario.
+        /// </summary>
+        /// <returns>Texto de definición del componente visual.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">El tipo de dato no se ha podido reconocer.</exception>
         public string GenerarDefinicionComponentes()
         {
+            if (TipoDato == TiposDatos.BLOB)
+                return string.Empty;
+            
             string ret_texto = string.Empty;
 
             switch (TipoDato)
@@ -271,14 +426,31 @@ if (parametro)
             return ret_texto;
         }
 
+        /// <summary>
+        /// Genera la definición de un label para el componente visual del formulario, con el nombre del atributo como caption.
+        /// </summary>
+        /// <returns>Texto de definición del label.</returns>
         public string GenerarDefinicionLabel()
         {
+            if (TipoDato == TiposDatos.BLOB)
+                return string.Empty;
+
             return "TLabel *" + ObtenerNombreLabel() + ";";
         }
 
-        public string CargaModelo()
+        /// <summary>
+        /// Genera el texto para cargar el atributo desde una consulta SQL.
+        /// </summary>
+        /// <param name="es_filtro">True si se carga el modelo de filtros, false si se carga el modelo de datos.</param>
+        /// <returns>Texto para cargar el atributo desde una consulta.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">El tipo de dato no se ha podido reconocer.</exception>
+        public string CargaModelo(bool es_filtro = false)
         {
-            string ret_texto = "_modelo_actual->" + ObtenerNombreCapitalizado() + " = ";
+            if (TipoDato == TiposDatos.BLOB)
+                return string.Empty;
+
+            string ret_texto = es_filtro ? "_modelo_filtros->" + ObtenerNombreCapitalizado() + " = " :
+                "_modelo_actual->" + ObtenerNombreCapitalizado() + " = ";
 
             switch (TipoDato)
             {
@@ -318,8 +490,16 @@ if (parametro)
             return ret_texto;
         }
 
+        /// <summary>
+        /// Genera el texto para cargar el valor del atributo en el componente visual del formulario, desde el modelo de datos.
+        /// </summary>
+        /// <returns>Texto para cargar un componente visual desde el modelo de datos.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">El tipo de dato no se ha podido reconocer.</exception>
         public string CargaFormulario()
         {
+            if (TipoDato == TiposDatos.BLOB)
+                return string.Empty;
+
             string ret_texto = ObtenerNombreComponente() + "->Text = ";
 
             switch (TipoDato)
@@ -360,8 +540,16 @@ if (parametro)
             return ret_texto;
         }
 
+        /// <summary>
+        /// Según el tipo de argumento genera el texto para dejar vacío el componente visual.
+        /// </summary>
+        /// <returns>Texto para dejar en blanco el componente visual.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">El tipo de dato no se ha podido reconocer.</exception>
         public string LimpiarComponentes()
         {
+            if (TipoDato == TiposDatos.BLOB)
+                return string.Empty;
+
             string ret_texto = string.Empty;
 
             switch (TipoDato)
@@ -379,10 +567,10 @@ if (parametro)
                     break;
                 case TiposDatos.FECHA:
                 case TiposDatos.MARCA_TIEMPO:
-                    ret_texto = ObtenerNombreComponente() + "->Text = __/__/____;";
+                    ret_texto = ObtenerNombreComponente() + "->Text = \"__/__/____\";";
                     break;
                 case TiposDatos.TIEMPO:
-                    ret_texto = ObtenerNombreComponente() + "->Text = __:__:;";
+                    ret_texto = ObtenerNombreComponente() + "->Text = \"__:__\";";
                     break;
                 case TiposDatos.BLOB:
                     ret_texto = ObtenerNombreComponente() + "->Clear();";
@@ -394,8 +582,19 @@ if (parametro)
             return ret_texto;
         }
 
+        /// <summary>
+        /// Genera la definición del componente visual para cargar el valor del atributo en el formulario, con su label correspondiente, dependiendo del tipo de dato.
+        /// </summary>
+        /// <param name="param_tab_order">Índice de tabulación del componente dentro del panel.</param>
+        /// <param name="param_top">Posición vertical del componente dentro del panel.</param>
+        /// <param name="param_left">Posición horizontal del componente dentro del panel.</param>
+        /// <returns>Texto para definir el componente visual en el formulario.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">El tipo de dato no se ha podido reconocer.</exception>
         public string ObtenerDefinicionComponente(int param_tab_order, int param_top, int param_left)
         {
+            if (TipoDato == TiposDatos.BLOB)
+                return string.Empty;
+
             string ret_texto = string.Empty;
 
             switch (TipoDato)
@@ -502,7 +701,7 @@ if (parametro)
         /// Convierte el tipo de dato a su equivalente en Embarcadero.
         /// </summary>
         /// <returns>Tipo de dato para C++</returns>
-        public string ConvertirTipoDatoCMasMas()
+        private string ConvertirTipoDatoCMasMas()
         {
             return TipoDato switch
             {
@@ -517,13 +716,47 @@ if (parametro)
                 TiposDatos.CADENA_CARACTERES => "String",
                 TiposDatos.FECHA => "TDate",
                 TiposDatos.MARCA_TIEMPO => "TDateTime",
-                TiposDatos.BLOB => "TStream",
+                TiposDatos.BLOB => "TMemoryStream*",
                 TiposDatos.TIEMPO => "TTime",
                 _ => "String"
             };
         }
 
+        /// <summary>
+        /// Según el tipo de dato devuelve el casteo de IBC para cargar el campo desde la consulta SQL.
+        /// </summary>
+        /// <returns>Tipo de casteo de IBC.</returns>
+        private string ObtenerTipoDatoTIBC()
+        {
+            string ret_tipo_dato = string.Empty;
+
+            switch (TipoDato)
+            {
+                case TiposDatos.DECIMAL:
+                case TiposDatos.DOBLE_PRECISION:
+                case TiposDatos.NUMERICO:
+                case TiposDatos.FLOTANTE:
+                    ret_tipo_dato = "AsFloat";
+                    break;
+                case TiposDatos.ENTERO:
+                case TiposDatos.PEQUENO_ENTERO:
+                case TiposDatos.GRAN_ENTERO:
+                    ret_tipo_dato = "AsInteger";
+                    break;
+                case TiposDatos.VARCHAR:
+                case TiposDatos.CADENA_CARACTERES:
+                    ret_tipo_dato = "AsString";
+                    break;  
+                case TiposDatos.FECHA:
+                case TiposDatos.MARCA_TIEMPO:
+                case TiposDatos.TIEMPO:
+                    ret_tipo_dato = "AsDateTime";
+                    break;
+            }
+
+            return ret_tipo_dato;
+        }
+
         #endregion "Métodos privados"
     }
 }
-

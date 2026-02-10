@@ -31,6 +31,7 @@ namespace generador_crud.Plantillas.CMasMas
 #define {NombreTabla}H
 //---------------------------------------------------------------------------
 #include <System.SysUtils.hpp>
+#include <System.Classes.hpp>
 //---------------------------------------------------------------------------
 /**
  * @brief   Objeto que representa la tabla de base de datos {NombreTabla}
@@ -49,7 +50,7 @@ public:
 	~T{NombreTabla}(){};
 
     // Métodos
-    Limpiar();
+    void Limpiar();
 
 	// Propiedades
 {Propiedades}
@@ -93,10 +94,8 @@ public:
  * @since   {FechaGeneracion}
  * @author  Generador CRUD.
  */
-T{NombreTabla}::T{NombreTabla}() :
-{InicializacionVacio}
-{
-
+T{NombreTabla}::T{NombreTabla}() :{InicializacionVacio}
+{{InicializacionVacioBlob}
 }
 //---------------------------------------------------------------------------
 /**
@@ -106,17 +105,15 @@ T{NombreTabla}::T{NombreTabla}() :
  * @since   {FechaGeneracion}
  * @author  Generador CRUD.
  */
-T{NombreTabla}::T{NombreTabla}(T{NombreTabla}* param_otro_modelo) :
-{IncializacionCopia}
-{
-
+T{NombreTabla}::T{NombreTabla}(T{NombreTabla}* param_otro_modelo) :{IncializacionCopia}
+{{InicializacionCopiaBlob}
 }
 //---------------------------------------------------------------------------
 #pragma end_region Constructor
 
 #pragma region Metodos Publicos
 //---------------------------------------------------------------------------
-T{NombreTabla}::Limpiar()
+void T{NombreTabla}::Limpiar()
 {{LimpiarAtributos}
 }
 //---------------------------------------------------------------------------

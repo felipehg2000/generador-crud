@@ -1,7 +1,52 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\controladores\\controladorparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:controladores\\controladorparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\controladores\\controladorficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:controladores\\controladorficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\formularios\\formularioficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:formularios\\formularioficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\formularios\\formularioficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:formularios\\formularioficherodefui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\plantillas\\c_sharp\\vista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:plantillas\\c_sharp\\vista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\controladores\\rescatarcustom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:controladores\\rescatarcustom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\controladores\\controladorsalidafirebird.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:controladores\\controladorsalidafirebird.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\modelos\\objetos\\columna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:modelos\\objetos\\columna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\modelos\\objetos\\tabla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:modelos\\objetos\\tabla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\modelos\\objetos\\definicionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:modelos\\objetos\\definicionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|c:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\modelos\\objetos\\itemseleccionado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5EE23EF-A4B5-449B-B75A-E1D9EBB5FCF3}|generador-crud.csproj|solutionrelative:modelos\\objetos\\itemseleccionado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 57,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +63,148 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ControladorParser.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\ControladorParser.cs",
+              "RelativeDocumentMoniker": "Controladores\\ControladorParser.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\ControladorParser.cs",
+              "RelativeToolTip": "Controladores\\ControladorParser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T20:23:50.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormularioFicheroDefUI.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioFicheroDefUI.cs",
+              "RelativeDocumentMoniker": "Formularios\\FormularioFicheroDefUI.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioFicheroDefUI.cs",
+              "RelativeToolTip": "Formularios\\FormularioFicheroDefUI.cs",
+              "ViewState": "AgIAAEMBAAAAAAAAAAA0wIQBAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T20:20:58.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Vista.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Plantillas\\C_Sharp\\Vista.cs",
+              "RelativeDocumentMoniker": "Plantillas\\C_Sharp\\Vista.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Plantillas\\C_Sharp\\Vista.cs",
+              "RelativeToolTip": "Plantillas\\C_Sharp\\Vista.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T19:57:53.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RescatarCustom.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\RescatarCustom.cs",
+              "RelativeDocumentMoniker": "Controladores\\RescatarCustom.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\RescatarCustom.cs",
+              "RelativeToolTip": "Controladores\\RescatarCustom.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T19:52:11.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ControladorFicheroDefUI.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\ControladorFicheroDefUI.cs",
+              "RelativeDocumentMoniker": "Controladores\\ControladorFicheroDefUI.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\ControladorFicheroDefUI.cs",
+              "RelativeToolTip": "Controladores\\ControladorFicheroDefUI.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAUwIoAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T18:34:31.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ControladorSalidaFirebird.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\ControladorSalidaFirebird.cs",
+              "RelativeDocumentMoniker": "Controladores\\ControladorSalidaFirebird.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Controladores\\ControladorSalidaFirebird.cs",
+              "RelativeToolTip": "Controladores\\ControladorSalidaFirebird.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T19:52:01.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormularioFicheroDefUI.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioFicheroDefUI.cs",
+              "RelativeDocumentMoniker": "Formularios\\FormularioFicheroDefUI.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Formularios\\FormularioFicheroDefUI.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Formularios\\FormularioFicheroDefUI.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T19:10:43.479Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Columna.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Modelos\\Objetos\\Columna.cs",
+              "RelativeDocumentMoniker": "Modelos\\Objetos\\Columna.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Modelos\\Objetos\\Columna.cs",
+              "RelativeToolTip": "Modelos\\Objetos\\Columna.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T19:47:03.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Tabla.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Modelos\\Objetos\\Tabla.cs",
+              "RelativeDocumentMoniker": "Modelos\\Objetos\\Tabla.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Modelos\\Objetos\\Tabla.cs",
+              "RelativeToolTip": "Modelos\\Objetos\\Tabla.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T19:44:21.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DefinicionUI.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Modelos\\Objetos\\DefinicionUI.cs",
+              "RelativeDocumentMoniker": "Modelos\\Objetos\\DefinicionUI.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Modelos\\Objetos\\DefinicionUI.cs",
+              "RelativeToolTip": "Modelos\\Objetos\\DefinicionUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T19:42:12.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ItemSeleccionado.cs",
+              "DocumentMoniker": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Modelos\\Objetos\\ItemSeleccionado.cs",
+              "RelativeDocumentMoniker": "Modelos\\Objetos\\ItemSeleccionado.cs",
+              "ToolTip": "C:\\proyectos\\generacion-automatica-de-codigo\\generador-crud\\Modelos\\Objetos\\ItemSeleccionado.cs",
+              "RelativeToolTip": "Modelos\\Objetos\\ItemSeleccionado.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T19:40:06.7Z",
+              "EditorCaption": ""
             }
           ]
         }

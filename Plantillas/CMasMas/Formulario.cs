@@ -55,15 +55,11 @@ __published:	// IDE-managed Components
 	TButton *ButtonCerrarPnlEditar;
 	TPanel *PanelFiltros;
 	TPanel *PanelTituloFiltros;
-	TPanel *PanelCentralFiltros;
-	TLabel *Label2;
+	TPanel *PanelCentralFiltros;{DefinicionAtributosFiltros}
 	TGridPanel *GridPanelBotonesFiltro;
 	TButton *ButtonFiltrarFiltros;
 	TButton *ButtonCerrarFiltros;
 	TButton *ButtonCerrar;{DefinicionAtributos}
-	TEdit *EditIdDesde;
-	TEdit *EditIdHasta;
-	TIBCSQLMonitor *IBCSQLMonitor1;
 	void __fastcall ButtonCrearClick(TObject *Sender);
 	void __fastcall ButtonEditarClick(TObject *Sender);
 	void __fastcall ButtonConsultarClick(TObject *Sender);
@@ -152,6 +148,12 @@ TForm{NombreTabla} *Form{NombreTabla};
 
 #pragma region Constructor
 //---------------------------------------------------------------------------
+/**
+ * @brief   Constructor, inicializa atributos.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 __fastcall TForm{NombreTabla}::TForm{NombreTabla}(TComponent* Owner) : 
 	TForm(Owner),
 	_es_modal(false),
@@ -168,6 +170,12 @@ MostrarFormulario(false);
 
 	#pragma region Formulario
 //---------------------------------------------------------------------------
+/**
+ * @brief   Método usado para mover la posición del panel.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::PanelTituloMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
 if (Button == mbLeft)
@@ -181,6 +189,12 @@ if (Button == mbLeft)
 
 	#pragma region CardPrincipal
 //---------------------------------------------------------------------------
+/**
+ * @brief   Abre el panel de campos en modo creación.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonCrearClick(TObject *Sender)
 {
 _apertura_edicion = TipoAperturaEdicion::CREACION;
@@ -188,6 +202,12 @@ ActivarCampos(true, clWhite);
 CardEdicionConsulta->Active = true;
 }
 //--------------------------------------------------------------------------- 
+/**
+ * @brief   Abre el panel de campos en modo edición. Rellena los campos.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonEditarClick(TObject *Sender)
 {
 _apertura_edicion = TipoAperturaEdicion::EDICION;
@@ -196,6 +216,12 @@ ActivarCampos(true, clWhite);
 CardEdicionConsulta->Active = true;	
 }
 //--------------------------------------------------------------------------- 
+/**
+ * @brief   Abre el panel de campos en modo consulta. Rellena los campos.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonConsultarClick(TObject *Sender)
 {	
 _apertura_edicion = TipoAperturaEdicion::CONSULTA;
@@ -204,11 +230,23 @@ ActivarCampos(false, clCream);
 CardEdicionConsulta->Active = true;	
 }
 //--------------------------------------------------------------------------- 
+/**
+ * @brief   Abre el panel de filtros.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonFiltrarClick(TObject *Sender)
 {
 CardFiltros->Active = true;	
 }
 //--------------------------------------------------------------------------- 
+/**
+ * @brief   Muestra un mensaje informativo y según la respuesta cancela el proceso o elimina un registro.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonBorrarClick(TObject *Sender)
 {
 int respuesta = Application->MessageBox(L""¿Está seguro de que quiere eliminar los datos?"",
@@ -226,6 +264,12 @@ ActualizarTabla();
 ButtonCerrarFiltrosClick(NULL);
 }
 //---------------------------------------------------------------------------
+/**
+ * @brief   Cierra el formulario.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonCerrarClick(TObject *Sender)
 {
 if (_es_modal)
@@ -238,6 +282,12 @@ else
 	}
 }
 //---------------------------------------------------------------------------
+/**
+ * @brief   Controla el aspecto visual de la tabla.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::StringGridListadoDrawCell(TObject *Sender, System::LongInt ACol,
           System::LongInt ARow, TRect &Rect, TGridDrawState State)
 {
@@ -297,12 +347,24 @@ if (grid)
 
 	#pragma region CardEdicionConsulta
 //---------------------------------------------------------------------------
+/**
+ * @brief   Muestra el panel principal y limpia los datos del panel de campos.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonCerrarPnlEditarClick(TObject *Sender)
 {
 CardPrincipal->Active = true;	
 LimpiarCampos();
 }
 //---------------------------------------------------------------------------
+/**
+ * @brief   Según el tipo de apertura del panel, crea un dato o lo edita.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonEditarPnlEditarClick(TObject *Sender)
 {
 if (_apertura_edicion == TipoAperturaEdicion::CREACION)
@@ -330,11 +392,23 @@ else
 
 	#pragma region CardFiltros
 //---------------------------------------------------------------------------
+/**
+ * @brief   Muestra el panel principal
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonCerrarFiltrosClick(TObject *Sender)
 {
 this->CardPrincipal->Active = true;
 }
 //---------------------------------------------------------------------------
+/**
+ * @brief   Actualiza los registros mostrados en la tabla y muestra el panel principal.
+ * @details Código generado de manera automática.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void __fastcall TForm{NombreTabla}::ButtonFiltrarFiltrosClick(TObject *Sender)
 {
 CargarFiltros();
@@ -348,6 +422,13 @@ ButtonCerrarFiltrosClick(NULL);
 
 #pragma region MetodosPublicos
 //---------------------------------------------------------------------------
+/**
+ * @brief   Prepara la interfaz del formulario y la muestra.
+ * @details Código generado de manera automática.
+ * @param   param_es_modal true para hacer ShowModal false para hacer Show.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void TForm{NombreTabla}::MostrarFormulario(const bool &param_es_modal)
 {
 // Cargar atributos
@@ -369,11 +450,11 @@ ActualizarTabla();
 // Mostrar formulario
 if (_es_modal)
 	{
-//	Show();
+	Show();
 	}
 else
 	{
-//	ShowModal();
+	ShowModal();
 	}
 }
 //---------------------------------------------------------------------------
@@ -381,6 +462,13 @@ else
 
 #pragma region Metodos privados
 //---------------------------------------------------------------------------
+/**
+ * @brief   Rellena el objeto _modelo_actual con los datos del formulario.
+ * @details Código generado de manera automática.
+ * @param   param_es_modal true para hacer ShowModal false para hacer Show.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void TForm{NombreTabla}::RellenarModelo()
 {
 if (_modelo_actual == NULL)
@@ -390,25 +478,46 @@ if (_modelo_actual == NULL)
 {CargarModelo}
 }
 //---------------------------------------------------------------------------
+/**
+ * @brief   Rellena el objeto _modelo_filtros con los datos del formulario de filtros.
+ * @details Código generado de manera automática.
+ * @param   param_es_modal true para hacer ShowModal false para hacer Show.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void TForm{NombreTabla}::CargarFiltros()
 {
 if (_modelo_filtros == NULL)
-   {
-   _modelo_filtros = new TFiltrosCAMPOS();
-	}
-_modelo_filtros->IdDesde = StrToInt64Def(EditIdDesde->Text, 0);
-_modelo_filtros->IdHasta = StrToInt64Def(EditIdHasta->Text, 0);
+    {
+    _modelo_filtros = new TFiltrosCAMPOS();
+    }{CargarFiltros}
 }
 //---------------------------------------------------------------------------
+/**
+ * @brief   Activa o desactiva los campos del formulario. Si se abre para edición se desactivan los campos no editables.
+ * @details Código generado de manera automática.
+ * @param   param_activar true para activar los campos, false para desactivarlos.
+ * @param   param_color color para los campos, según si están activos o no.
+ * @param   param_es_modal true para hacer ShowModal false para hacer Show.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void TForm{NombreTabla}::ActivarCampos(const bool &param_activar, const TColor &param_color)
-{
-{ActivarComponentes}
+{{ActivarComponentes}
 {ColorComponentes}
-if (_apertura_edicion == TiposAperturaEdicion::EDICION)
+
+if (_apertura_edicion == TipoAperturaEdicion::EDICION)
 	{{GestionarEdicion}
 	}
 }
 //---------------------------------------------------------------------------
+/**
+ * @brief   Limpia la tabla y la rellena con el nuevo listado de registros.
+ * @details Código generado de manera automática.
+ * @param   param_es_modal true para hacer ShowModal false para hacer Show.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void TForm{NombreTabla}::ActualizarTabla()
 {
 for (int fila = 1; fila < StringGridListado->RowCount; fila++)
@@ -429,6 +538,13 @@ for (std::vector<TCAMPOS*>::iterator it = _lista_campos.begin(); it != _lista_ca
 StringGridListado->RowCount--;
 }
 //---------------------------------------------------------------------------
+/**
+ * @brief   Rellena el formulario de campos con los datos del registro seleccionado en la tabla.
+ * @details Código generado de manera automática.
+ * @param   param_es_modal true para hacer ShowModal false para hacer Show.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void TForm{NombreTabla}::RellenarFormulario()
 {
 int indice = StringGridListado->Row - 1;
@@ -436,6 +552,13 @@ TCAMPOS* registro = _lista_campos.at(indice);
 {CargarFormulario}
 }
 //---------------------------------------------------------------------------
+/**
+ * @brief   Deja en blanco todos los campos del formulario del panel de campos.
+ * @details Código generado de manera automática.
+ * @param   param_es_modal true para hacer ShowModal false para hacer Show.
+ * @since   {FechaGeneracion}
+ * @author  Generador CRUD.
+ */
 void TForm{NombreTabla}::LimpiarCampos()
 {
 {LimpiarRegistros}
@@ -838,30 +961,7 @@ object Form{NombreTabla}: TForm{NombreTabla}
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
-          TabOrder = 1
-          object Label2: TLabel
-            Left = 40
-            Top = 40
-            Width = 34
-            Height = 15
-            Caption = 'Label1'
-          end
-          object EditIdDesde: TEdit
-            Left = 40
-            Top = 61
-            Width = 121
-            Height = 23
-            NumbersOnly = True
-            TabOrder = 0
-          end
-          object EditIdHasta: TEdit
-            Left = 40
-            Top = 90
-            Width = 121
-            Height = 23
-            NumbersOnly = True
-            TabOrder = 1
-          end
+          TabOrder = 1{DefinicionComponentesFiltros}
         end
         object GridPanelBotonesFiltro: TGridPanel
           AlignWithMargins = True
@@ -929,10 +1029,6 @@ object Form{NombreTabla}: TForm{NombreTabla}
         end
       end
     end
-  end
-  object IBCSQLMonitor1: TIBCSQLMonitor
-    Left = 460
-    Top = 335
   end
 end
 ";
