@@ -146,9 +146,9 @@
             // panelHerramientas
             // 
             panelHerramientas.BackColor = SystemColors.ActiveCaption;
-            panelHerramientas.Controls.Add(buttonSelTabla);
             panelHerramientas.Controls.Add(buttonSelFiltro);
             panelHerramientas.Controls.Add(buttonEdicion);
+            panelHerramientas.Controls.Add(buttonSelTabla);
             panelHerramientas.Controls.Add(labelTextoHerramientas);
             panelHerramientas.Location = new Point(684, 102);
             panelHerramientas.Name = "panelHerramientas";
