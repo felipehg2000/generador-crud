@@ -86,11 +86,12 @@ namespace PruebaPlantillas
         /// <summary>
         /// Constructor de la clase, inicializa componentes y atributos.
         /// </summary>
-        public Formulario{NombreTabla}()
+        /// <param name=""param_ruta_bd"">Ruta de la base de datos a la que se conectará el controlador.</param>
+        public Formulario{NombreTabla}(stirng param_ruta_bd)
         {
             InitializeComponent();
 
-            string ruta_bd = ""C:\\Users\\FELIPE\\Desktop\\Máster\\GCA\\Entrega 2\\Pruebas\\BaseDatos\\BDPruebas.db"";
+            string ruta_bd = param_ruta_bd;
             _controlador = new Controlador{NombreTabla}(ruta_bd);
 
             _es_modal = false;
