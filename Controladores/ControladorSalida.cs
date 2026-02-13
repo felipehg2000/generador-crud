@@ -5,7 +5,7 @@ namespace generador_crud.Controladores
     /// <summary>
     /// Controlador para gestionar la lectura del código customizado en los ficheros.
     /// </summary>
-    internal class RescatarCustom
+    internal class ControladorSalida
     {
         /// <summary>
         /// Busca el código customizado por el usuario y lo rescata.

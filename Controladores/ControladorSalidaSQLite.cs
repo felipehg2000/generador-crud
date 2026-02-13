@@ -6,13 +6,14 @@ namespace generador_crud.Controladores
     /// <summary>
     /// Clase encargada de generar los archivos de salida para .NET.
     /// </summary>
-    internal class ControladorSalidaSQLite
+    internal class ControladorSalidaSQLite : ControladorSalida
     {
         /// <summary>
         /// Método principal, orquesta la generación de cada uno de los ficheros.
         /// </summary>
         /// <param name="param_configuracion">Configuración que ha hecho el usuario en la interfaz. Rutas de salida.</param>
         /// <param name="param_tabla">Objeto de la tabla de base de datos de la que se va a generar la salida.</param>
+        /// <param name="param_definicion_ui">Definición de la vista creada por el usuario.</param>
         /// <exception cref="ArgumentNullException">Excepción lanzada si algún parámetro es nulo.</exception>
         static public void Generar(Configuracion param_configuracion,
             Tabla param_tabla,
@@ -29,7 +30,7 @@ namespace generador_crud.Controladores
             string ruta_modelo = param_configuracion.RutaModelos + "\\" + param_tabla.Nombre + ".cs";
             string custom = string.Empty;
             if (!param_configuracion.SobreescribirArchivosExistentes)
-                custom = RescatarCustom.Obtener(ruta_modelo);
+                custom = Obtener(ruta_modelo);
             texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_modelo, texto);
 
@@ -38,7 +39,7 @@ namespace generador_crud.Controladores
             ruta_modelo = param_configuracion.RutaModelos + "\\" + "Filtros" + param_tabla.Nombre + ".cs";
             custom = string.Empty;
             if (!param_configuracion.SobreescribirArchivosExistentes)
-                custom = RescatarCustom.Obtener(ruta_modelo);
+                custom = Obtener(ruta_modelo);
             texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_modelo, texto);
 
@@ -47,7 +48,7 @@ namespace generador_crud.Controladores
             string ruta_controlador_bd = param_configuracion.RutaControladoresDAO + "\\ControladorDAO" + param_tabla.Nombre + ".cs";
             custom = string.Empty;
             if (!param_configuracion.SobreescribirArchivosExistentes)
-                custom = RescatarCustom.Obtener(ruta_controlador_bd);
+                custom = Obtener(ruta_controlador_bd);
             texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_controlador_bd, texto);
 
@@ -56,7 +57,7 @@ namespace generador_crud.Controladores
             string ruta_controlador = param_configuracion.RutaControladores + "\\Controlador" + param_tabla.Nombre + ".cs";
             custom = string.Empty;
             if (!param_configuracion.SobreescribirArchivosExistentes)
-                custom = RescatarCustom.Obtener(ruta_controlador);
+                custom = Obtener(ruta_controlador);
             texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_controlador, texto);
 
@@ -65,7 +66,7 @@ namespace generador_crud.Controladores
             string ruta_vista = param_configuracion.RutaUI + "\\Formulario" + param_tabla.Nombre + ".cs";
             custom = string.Empty;
             if (!param_configuracion.SobreescribirArchivosExistentes)
-                custom = RescatarCustom.Obtener(ruta_vista);
+                custom = Obtener(ruta_vista);
             texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_vista, texto);
 

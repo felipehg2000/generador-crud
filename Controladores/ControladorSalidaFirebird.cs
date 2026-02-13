@@ -6,7 +6,7 @@ namespace generador_crud.Controladores
     /// <summary>
     /// Clase encargada de generar los archivos de salida para C++ Builder.
     /// </summary>
-    internal class ControladorSalidaFirebird
+    internal class ControladorSalidaFirebird : ControladorSalida
     {
         /// <summary>
         /// Controla la generación de texto y ficheros de modelos, controlador DAO, controlador y formulario a partir de la tabla y definición de UI proporcionada.
@@ -18,47 +18,70 @@ namespace generador_crud.Controladores
             Tabla param_tabla,
             DefinicionUI param_definicion_ui)
         {
+            string custom = string.Empty;
+
             // Generar fichero de modelo .h
             string texto = GenerarModeloEncabezados(param_tabla);
             string ruta_modelo = param_configuracion.RutaModelos + "\\" + param_tabla.Nombre + ".h";
-            string texto_custom = "";
             if (!param_configuracion.SobreescribirArchivosExistentes)
-                texto_custom = RescatarCustom.Obtener(ruta_modelo);
+                custom = Obtener(ruta_modelo);
+            texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_modelo, texto);
 
             // Generar fichero de modelo .cpp
             texto = GenerarModeloImplementacion(param_tabla);
             ruta_modelo = param_configuracion.RutaModelos + "\\" + param_tabla.Nombre + ".cpp";
+            if (!param_configuracion.SobreescribirArchivosExistentes)
+                custom = Obtener(ruta_modelo);
+            texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_modelo, texto);
 
             // Generar fichero de modelo de filtros .h
             texto = GenerarModeloFiltrosEncabezados(param_tabla, param_definicion_ui);
             ruta_modelo = param_configuracion.RutaModelos + "\\Filtros" + param_tabla.Nombre + ".h";
+            if (!param_configuracion.SobreescribirArchivosExistentes)
+                custom = Obtener(ruta_modelo);
+            texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_modelo, texto);
 
             // Generar fichero de modelo de filtros .cpp
             texto = GenerarModeloFiltrosImplementacion(param_tabla, param_definicion_ui);
             ruta_modelo = param_configuracion.RutaModelos + "\\Filtros" + param_tabla.Nombre + ".cpp";
+            if (!param_configuracion.SobreescribirArchivosExistentes)
+                custom = Obtener(ruta_modelo);
+            texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_modelo, texto);
 
             // Generar fichero de controlador DAO .h
             texto = GenerarControladorDAOEncabezados(param_tabla);
             string ruta_controlador_dao = param_configuracion.RutaControladoresDAO + "\\ControladorDAO" + param_tabla.Nombre + ".h";
+            if (!param_configuracion.SobreescribirArchivosExistentes)
+                custom = Obtener(ruta_controlador_dao);
+            texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_controlador_dao, texto);
 
             // Generar fichero de controlador DAO .cpp
             texto = GenerarControladorDAOImplementacion(param_tabla, param_definicion_ui);
             ruta_controlador_dao = param_configuracion.RutaControladoresDAO + "\\ControladorDAO" + param_tabla.Nombre + ".cpp";
+            if (!param_configuracion.SobreescribirArchivosExistentes)
+                custom = Obtener(ruta_controlador_dao);
+            texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_controlador_dao, texto);
 
             // Generar fichero de controlador .h
             texto = GenerarControladorEncabezados(param_tabla);
             string ruta_controlador = param_configuracion.RutaControladores + "\\Controlador" + param_tabla.Nombre + ".h";
+            if (!param_configuracion.SobreescribirArchivosExistentes)
+                custom = Obtener(ruta_controlador);
+            texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_controlador, texto);
 
             // Generar fichero de controlador .cpp
             texto = GenerarControladorImplementacion(param_tabla);
             ruta_controlador = param_configuracion.RutaControladores + "\\Controlador" + param_tabla.Nombre + ".cpp";
+            if (!param_configuracion.SobreescribirArchivosExistentes)
+                custom = Obtener(ruta_controlador);
+            texto = texto.Replace("{CodigoCustom}", custom);
             System.IO.File.WriteAllText(ruta_controlador, texto);
 
             // Generar fichero de Formulario .h
