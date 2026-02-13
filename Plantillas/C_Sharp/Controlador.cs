@@ -1,5 +1,8 @@
 ﻿namespace generador_crud.Plantillas.C_Sharp
 {
+    /// <summary>
+    /// Define la clase Controlador, que orquesta la ejecución de las funcionalidades del programa.
+    /// </summary>
     internal class Controlador
     {
         public static string Plantilla =

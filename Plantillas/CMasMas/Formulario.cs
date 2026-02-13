@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace generador_crud.Plantillas.CMasMas
+﻿namespace generador_crud.Plantillas.CMasMas
 {
+    /// <summary>
+    /// Define la plantilla para generar el código de los formularios de cada tabla de base de datos, que se encargan de mostrar la información al usuario y permitir su interacción con ella a través de la interfaz gráfica.
+    /// </summary>
     internal class Formulario
     {
         static readonly public string PlantillaH=
-@"
+@"//---------------------------------------------------------------------------
+/**
+ * Fichero generado automáticamente por un generador de código de tipo CRUD.
+ *
+ * Si se modifica este fichero, los cambios se perderán al regenerar el texto.
+ *
+ * Fecha de generación: {FechaGeneracion}
+ * Clase: TFormulario{NombreTabla}
+ * Autor: GeneradorDeModelos
+ * Autor del generador de Modelos: Felipe Hernández González
+ */
 //---------------------------------------------------------------------------
 #ifndef Formulario{NombreTabla}H
 #define Formulario{NombreTabla}H
@@ -124,7 +131,17 @@ extern PACKAGE TForm{NombreTabla} *Form{NombreTabla};
 #endif";
 
 		static readonly public string PlantillaCPP =
-@"
+@"//---------------------------------------------------------------------------
+/**
+ * Fichero generado automáticamente por un generador de código de tipo CRUD.
+ *
+ * Si se modifica este fichero, los cambios se perderán al regenerar el texto.
+ *
+ * Fecha de generación: {FechaGeneracion}
+ * Clase: TFormulario{NombreTabla}
+ * Autor: GeneradorDeModelos
+ * Autor del generador de Modelos: Felipe Hernández González
+ */
 //---------------------------------------------------------------------------
 
 #include <vcl.h>

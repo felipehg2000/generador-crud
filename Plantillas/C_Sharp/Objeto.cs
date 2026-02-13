@@ -1,5 +1,8 @@
 ﻿namespace generador_crud.Plantillas.C_Sharp
 {
+    /// <summary>
+    /// Define un objeto que representa un campo de una tabla de una tabla.
+    /// </summary>
     internal class Objeto
     {
         public static string Plantilla =

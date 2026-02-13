@@ -1,5 +1,8 @@
 ﻿namespace generador_crud.Plantillas.C_Sharp
 {
+    /// <summary>
+    /// Define la clase ControladorConexionBD, que gestiona la conexión a la base de datos SQLite.
+    /// </summary>
     internal class ControladorConexion
     {
         public static string Plantilla =

@@ -1,5 +1,8 @@
 ﻿namespace generador_crud.Plantillas.C_Sharp
 {
+    /// <summary>
+    /// Define la clase DAO para acceder a la tabla {NombreTabla} de la base de datos.
+    /// </summary>
     internal class ControladorDAO
     {
         public static string Plantilla =

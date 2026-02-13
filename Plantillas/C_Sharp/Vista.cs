@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace generador_crud.Plantillas.C_Sharp
+﻿namespace generador_crud.Plantillas.C_Sharp
 {
+    /// <summary>
+    /// Define la clase de la vista, que contiene la interfaz gráfica y la interacción con el usuario.
+    /// </summary>
     internal class Vista
     {
         static readonly public string PlantillaCS =

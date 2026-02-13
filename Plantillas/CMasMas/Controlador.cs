@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace generador_crud.Plantillas.CMasMas
+﻿namespace generador_crud.Plantillas.CMasMas
 {
+	/// <summary>
+	/// Define la plantilla para generar el código de los controladores de cada tabla de base de datos, que se encargan de conectar la vista con el modelo y la base de datos.
+	/// </summary>
     internal class Controlador
     {
         static readonly public string PlantillaH =
@@ -14,12 +11,10 @@ namespace generador_crud.Plantillas.CMasMas
  * Fichero generado automáticamente por un generador de código de tipo CRUD.
  *
  * Si se modifica este fichero, los cambios se perderán al regenerar el texto.
- * Para evitar la pérdida de cambios, utilice comentarios del tipo:
- * <custom method='...'> 
- *    Implementación del código. 
- * </custom>
- * Method, si es nuevo, se añadirá el literal new, si es código dentro de un
- * método generado, se pondrá el nombre del método.
+ * Para evitar la pérdida de cambios, el código a mantener introduzcalo en el apartado:
+ * // <custom>
+ *
+ * // </custom>
  *
  * Fecha de generación: {FechaGeneracion}
  * Clase: TControlador{NombreTabla}
@@ -58,6 +53,10 @@ public:
 	// Propiedades
 	__property TControladorDAO{NombreTabla} * ControladorDAO = {read = _controlador_bd};
 	__property TControladorConexion * ConexionBD = {read = _conexion_bd};
+
+// <custom>
+{CodigoCustom}
+// </custom>
 };
 //---------------------------------------------------------------------------
 #endif
@@ -70,12 +69,10 @@ public:
  * Fichero generado automáticamente por un generador de código de tipo CRUD.
  *
  * Si se modifica este fichero, los cambios se perderán al regenerar el texto.
- * Para evitar la pérdida de cambios, utilice comentarios del tipo:
- * <custom method='...'> 
- *    Implementación del código. 
- * </custom>
- * Method, si es nuevo, se añadirá el literal new, si es código dentro de un
- * método generado, se pondrá el nombre del método.
+ * Para evitar la pérdida de cambios, el código a mantener introduzcalo en el apartado:
+ * // <custom>
+ *
+ * // </custom>
  *
  * Fecha de generación: {FechaGeneracion}
  * Clase: TControlador{NombreTabla}
@@ -210,6 +207,10 @@ return _controlador_bd->Read(param_modelo);
 }
 //---------------------------------------------------------------------------
 #pragma end_region Metodos Publicos
+
+// <custom>
+{CodigoCustom}
+// </custom>
 
 ";
     }
