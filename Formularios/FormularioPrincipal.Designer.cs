@@ -264,9 +264,9 @@
             checkBoxSobreescribir.AutoSize = true;
             checkBoxSobreescribir.Location = new Point(12, 413);
             checkBoxSobreescribir.Name = "checkBoxSobreescribir";
-            checkBoxSobreescribir.Size = new Size(239, 19);
+            checkBoxSobreescribir.Size = new Size(233, 19);
             checkBoxSobreescribir.TabIndex = 13;
-            checkBoxSobreescribir.Text = "Sobreescribir ficheros de salida si existen";
+            checkBoxSobreescribir.Text = "Sobrescribir ficheros de salida si existen";
             checkBoxSobreescribir.UseVisualStyleBackColor = true;
             // 
             // checkBoxDefinicionesUI
