@@ -25,6 +25,13 @@ namespace generador_crud.Controladores
                 throw new ArgumentNullException("No se encuentra la información suficiente.");
             }
 
+            // Generar ControladorConexion si no existe.
+            if (!File.Exists(param_configuracion.RutaControladores + "\\ControladorConexion.cs"))
+            {
+                string ruta_controlador_conexion = param_configuracion.RutaControladoresDAO + "\\ControladorConexion.cs";
+                System.IO.File.WriteAllText(ruta_controlador_conexion, ControladorConexion.Plantilla);
+            }
+
             // Generar modelo
             string texto = GenerarModelo(param_tabla);
             string ruta_modelo = param_configuracion.RutaModelos + "\\" + param_tabla.Nombre + ".cs";

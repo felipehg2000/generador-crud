@@ -39,7 +39,7 @@ private:
 
 public:
 	// Constructor y destructor
-	TControlador{NombreTabla}();
+	TControlador{NombreTabla}(String param_ruta_bd);
 	TControlador{NombreTabla}(TControladorConexion* param_conexion_bd);
 	~TControlador{NombreTabla}();
 
@@ -94,10 +94,10 @@ public:
  * @since   {FechaGeneracion}
  * @author  Generador CRUD.
  */
-TControlador{NombreTabla}::TControlador{NombreTabla}() :
+TControlador{NombreTabla}::TControlador{NombreTabla}(String param_ruta_bd) :
 	_creada_conexion(true)
 {
-_conexion_bd = new TControladorConexion(""C://Users//ApliUser//Desktop//Pruebas Generador//BDAUXGENERADOR.FDB"");
+_conexion_bd = new TControladorConexion(param_ruta_bd);
 _controlador_bd = new TControladorDAOCAMPOS(_conexion_bd->ConexionBD);
 }
 //---------------------------------------------------------------------------

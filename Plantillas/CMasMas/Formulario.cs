@@ -117,10 +117,12 @@ private:
 
 public:
 	// Constructor
-	__fastcall TForm{NombreTabla}(TComponent* Owner);
+	__fastcall TForm{NombreTabla}(TComponent* Owner,
+        const String &param_ruta_bd);
 
 	// Métodos
-	void MostrarFormulario(const bool &param_es_modal);
+	void MostrarFormulario(const bool &param_es_modal,
+        const String &param_ruta_bd);
 
 	// Propiedades
 	__property bool EsModal = {read = _es_modal, write = _es_modal};
@@ -168,17 +170,18 @@ TForm{NombreTabla} *Form{NombreTabla};
 /**
  * @brief   Constructor, inicializa atributos.
  * @details Código generado de manera automática.
+ * @param   param_ruta_bd ruta de la base de datos para crear el controlador.
  * @since   {FechaGeneracion}
  * @author  Generador CRUD.
  */
-__fastcall TForm{NombreTabla}::TForm{NombreTabla}(TComponent* Owner) : 
+__fastcall TForm{NombreTabla}::TForm{NombreTabla}(TComponent* Owner, const String &param_ruta_bd) : 
 	TForm(Owner),
 	_es_modal(false),
 	_modelo_actual(NULL),
 	_modelo_filtros(NULL),
 	_apertura_edicion(TipoAperturaEdicion::NULO)
 {
-MostrarFormulario(false);
+MostrarFormulario(false, param_ruta_bd);
 }
 //---------------------------------------------------------------------------
 #pragma end_region Constructor
@@ -443,15 +446,16 @@ ButtonCerrarFiltrosClick(NULL);
  * @brief   Prepara la interfaz del formulario y la muestra.
  * @details Código generado de manera automática.
  * @param   param_es_modal true para hacer ShowModal false para hacer Show.
+ * @param   param_ruta_bd ruta de la base de datos para crear el controlador.
  * @since   {FechaGeneracion}
  * @author  Generador CRUD.
  */
-void TForm{NombreTabla}::MostrarFormulario(const bool &param_es_modal)
+void TForm{NombreTabla}::MostrarFormulario(const bool &param_es_modal, const String &param_ruta_bd)
 {
 // Cargar atributos
 _es_modal = param_es_modal;
 CardPrincipal->Active = true;
-_controlador = new TControladorCAMPOS();
+_controlador = new TControlador{NombreTabla}(param_ruta_bd);
 
 // Rellenar StringGrid
 StringGridListado->RowCount = 2;
@@ -490,7 +494,7 @@ void TForm{NombreTabla}::RellenarModelo()
 {
 if (_modelo_actual == NULL)
    {
-   _modelo_actual = new TCAMPOS();
+   _modelo_actual = new T{NombreTabla}();
 	}
 {CargarModelo}
 }
@@ -506,7 +510,7 @@ void TForm{NombreTabla}::CargarFiltros()
 {
 if (_modelo_filtros == NULL)
     {
-    _modelo_filtros = new TFiltrosCAMPOS();
+    _modelo_filtros = new TFiltros{NombreTabla}();
     }{CargarFiltros}
 }
 //---------------------------------------------------------------------------
@@ -546,7 +550,7 @@ CargarFiltros();
 _lista_campos.erase(_lista_campos.begin(), _lista_campos.end());
 _lista_campos = _controlador->Read(_modelo_filtros);
 
-for (std::vector<TCAMPOS*>::iterator it = _lista_campos.begin(); it != _lista_campos.end(); ++it)
+for (std::vector<T{NombreTabla}*>::iterator it = _lista_campos.begin(); it != _lista_campos.end(); ++it)
 	{{RellenarColumnas}
 
 	StringGridListado->RowCount++;
@@ -565,7 +569,7 @@ StringGridListado->RowCount--;
 void TForm{NombreTabla}::RellenarFormulario()
 {
 int indice = StringGridListado->Row - 1;
-TCAMPOS* registro = _lista_campos.at(indice);
+T{NombreTabla}* registro = _lista_campos.at(indice);
 {CargarFormulario}
 }
 //---------------------------------------------------------------------------

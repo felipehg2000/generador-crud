@@ -269,11 +269,21 @@ namespace generador_crud
             radioButtonSQLite.Checked = configuracion.EsSQLite;
         }
 
+        /// <summary>
+        /// Busca el directorio donde guardar los ficheros generados de la UI.
+        /// </summary>
+        /// <param name="sender">Componente que lanza el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void buttonRutaUI_Click(object sender, EventArgs e)
         {
             textBoxRutaUI.Text = buttonRutaDestino_Click();
         }
 
+        /// <summary>
+        /// Unifica todos los destinos de generación en uno solo, desactivando los botones de selección de ruta individuales.
+        /// </summary>
+        /// <param name="sender">Componente que lanza el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void checkBoxUnificarDestinos_CheckedChanged(object sender, EventArgs e)
         {
             string ruta = textBoxRutaDestinoUI.Text;
