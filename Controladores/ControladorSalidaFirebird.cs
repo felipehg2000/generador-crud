@@ -20,6 +20,13 @@ namespace generador_crud.Controladores
         {
             string custom = string.Empty;
 
+            // Generar ControladorConexion si no existe
+            if (!File.Exists(param_configuracion.RutaControladores + "\\ControladorConexion.h") || !File.Exists(param_configuracion.RutaControladores + "\\ControladorConexion.cpp"))
+            {
+                System.IO.File.WriteAllText(param_configuracion.RutaControladores + "\\ControladorConexion.h", ControladorConexion.PlantillaH);
+                System.IO.File.WriteAllText(param_configuracion.RutaControladores + "\\ControladorConexion.cpp", ControladorConexion.PlantillaCPP);
+            }
+
             // Generar fichero de modelo .h
             string texto = GenerarModeloEncabezados(param_tabla);
             string ruta_modelo = param_configuracion.RutaModelos + "\\" + param_tabla.Nombre + ".h";

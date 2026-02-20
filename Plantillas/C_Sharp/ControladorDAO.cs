@@ -222,7 +222,8 @@ WHERE "" +
             return filtros;
         }
 
-        // <custom>{CodigoCustom}
+        // <custom>
+{CodigoCustom}
         // </custom>
     }
 }
