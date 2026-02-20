@@ -367,7 +367,8 @@ namespace PruebaPlantillas
         //----------------------------------------------------------
         #endregion ""Método privado""
 
-        // <custom>{CodigoCustom}
+        // <custom>
+{CodigoCustom}
         // </custom>
     }
 }
