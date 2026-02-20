@@ -84,7 +84,7 @@ namespace PruebaPlantillas
         /// Constructor de la clase, inicializa componentes y atributos.
         /// </summary>
         /// <param name=""param_ruta_bd"">Ruta de la base de datos a la que se conectará el controlador.</param>
-        public Formulario{NombreTabla}(stirng param_ruta_bd)
+        public Formulario{NombreTabla}(string param_ruta_bd)
         {
             InitializeComponent();
 
@@ -367,7 +367,8 @@ namespace PruebaPlantillas
         //----------------------------------------------------------
         #endregion ""Método privado""
 
-        // <custom>{CodigoCustom}
+        // <custom>
+{CodigoCustom}
         // </custom>
     }
 }

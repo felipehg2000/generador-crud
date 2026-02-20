@@ -37,7 +37,8 @@ namespace PruebaPlantillas.Modelos.Objetos
     {
 {DefinicionAtributos}
 
-        // <custom>{CodigoCustom}
+        // <custom>
+{CodigoCustom}
         // </custom>
 
         /// <summary>
