@@ -442,6 +442,7 @@ namespace generador_crud.Formularios
             }
 
             List<Columna> columnas = Tablas.ElementAt(posicion_tabla).Columnas;
+            NumColumnas = 0;
             RellenarCamposTabla(columnas,
                 Tablas.ElementAt(posicion_tabla).TipoBD);
         }

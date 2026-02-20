@@ -17,13 +17,14 @@ namespace generador_crud.Controladores
         {
             if (string.IsNullOrEmpty(param_ruta) || !System.IO.File.Exists(param_ruta))
             {
-                throw new System.ArgumentException("La ruta está vacía o el fichero no existe.");
+                return string.Empty;
             }
 
             string codigo = System.IO.File.ReadAllText(param_ruta);
 
-            var expresion_regular = new Regex(@"//\s*<custom>\s*(.*?)\s*//\s*</custom>",
-                RegexOptions.Singleline);
+            var expresion_regular = new Regex(
+                @"^\s*//\s*<custom>\s*\r?\n(.*?)^\s*//\s*</custom>",
+                RegexOptions.Singleline | RegexOptions.Multiline);
 
             Match match = expresion_regular.Match(codigo);
             if (match.Success)

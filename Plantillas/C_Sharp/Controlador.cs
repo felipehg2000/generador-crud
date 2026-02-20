@@ -112,7 +112,8 @@ namespace PruebaPlantillas.Controladores
             return _controlador_dao.Leer(param_filtro);
         }
 
-        // <custom>{CodigoCustom}
+        // <custom
+{CodigoCustom}
         // </custom>
     }
 }
